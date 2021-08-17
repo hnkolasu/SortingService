@@ -47,7 +47,7 @@ app.get("/", (req, res, next) => {
 });
 
 app.get("/ola", (req, res, next) => {
-    res.json({"message":"Ao invés de um GET, use um POST com os parametros certos no JSON para ordenar os livros"})
+    res.json({"message":"Ao invés de um GET, use um POST com os parametros certos no JSON para ordenar os livros!"})
 });
 
 
