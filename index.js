@@ -15,17 +15,16 @@ app.listen(HTTP_PORT, () => {
 
 
 function sortingServiceException(message) { // function to send an error when needed
-    const error = new Error(message);
-    return error;
+   const error = new Error(message);
+  return error;
   }
 
 
 
 app.post("/books", (req, res, next) => {
 
-    if(req.body.options.filters.length || req.body.options.orders.length == 0){  // Throws an error if the filters or orders are empty
-
-        throw new sortingServiceException('"options" cannot be empty');
+    if(req.body.options.filters.length == 0 || req.body.options.orders.length == 0){  // Throws an error if the filters or orders are empty
+       throw new sortingServiceException('"options" cannot be empty');
     
     }
 
@@ -37,7 +36,7 @@ app.post("/books", (req, res, next) => {
 
     //comparator function takes "a" and "b" as variables, as these variables are needed for the sort() function, where the comparator function is called
     function comparator(a,b) { 
-        var i = 0,
+        var i = -1,
         length = options.filters.length,
         ordersLength = options.orders.length;
         filters = options.filters;
@@ -46,7 +45,7 @@ app.post("/books", (req, res, next) => {
 
         //the while runs through for each parameter
 
-        while (i < length) {
+        while (++i < length) {
 
             var result = a[filters[i]].localeCompare(b[filters[i]]);         //a and b are each books which here are compared, and return 1, 0, or -1, if "a" is first, equal or after "b" respectively 
             
@@ -60,11 +59,12 @@ app.post("/books", (req, res, next) => {
                 return result * (order == 'desc' ? -1 : 1);                  // checks order, if its descending sends -1, else 1
             }
 
-        ++i
+        
         }
     }
 
     books.sort(comparator);
+    console.log(books)
     res.json(books);
 });
 
