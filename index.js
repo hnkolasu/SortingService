@@ -15,8 +15,8 @@ app.listen(HTTP_PORT, () => {
 
 
 function sortingServiceException(message) { // function to send an error when needed
-    const error = new Error(message);
-    return error;
+    //const error = new Error(message);
+    //return error;
   }
 
 
@@ -24,7 +24,8 @@ function sortingServiceException(message) { // function to send an error when ne
 app.post("/books", (req, res, next) => {
 
     if(req.body.options.filters.length || req.body.options.orders.length == 0){  // Throws an error if the filters or orders are empty
-
+        console.log(req.body.options.filters.length)
+        console.log(req.body.options.orders.length)
         throw new sortingServiceException('"options" cannot be empty');
     
     }
@@ -77,9 +78,6 @@ app.get("/books", (req, res, next) => { // since GET request are the most common
 });
 
 
-
-
-// Insert here other API endpoints
 
 // Default response for any other request
 app.use(function(req, res){

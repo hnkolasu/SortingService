@@ -22,7 +22,7 @@
      ],
      "options":
      {
-         "filters":["edition", "author", "title"]
+         "filters":["edition", "author", "title"],
          "orders":["desc", "desc", "asc"]
      }
  }
@@ -41,10 +41,6 @@ After cloning the project, open the terminal and execute the command "npm instal
 After that, run the project by using the command "npm start"
 While running, send a POST request to localhost:8000/books with the correctly formatted JSON
 
-projeto, como funciona, breve descricao
-como é o formato do json
 
-como rodar localmente
--clonar o projeto e executar o "npm install"
--rodar o projeto com "npm start"
--enviar um post para localhost:8000/livros com o json formatado corretamente
+
+I used nodejs v14.17.5, and Visual Studio Code
